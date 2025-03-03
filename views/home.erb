@@ -1,0 +1,26 @@
+<div class="form-container">
+    <form class="webform" action="/stats" method="get">
+      <fieldset>
+        <h4 class="form-text">Football Squads</h4>
+        <div>
+          <label for="league" id="league-label" class="form-text"><b>Leagues</b></label>
+          <select name="league" id="league" value="Select a league">
+            <% $leagues.each do |key, value| %>
+            <option value="<%= key %>"><%= value %></option>
+            <% end %>
+          </select>
+        </div>
+        <div>
+          <label for="team" id="team-label" class="form-text"><b>Clubs</b></label>
+          <select name="team" id="team" disabled>
+            <option value="">Select a team</option>
+          </select>
+        </div>
+        <div>
+          <button type="submit">Enter</button>
+        </div>
+      </fieldset>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="form_function.js"></script>

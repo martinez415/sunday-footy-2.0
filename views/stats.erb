@@ -1,0 +1,98 @@
+<div class="details-container">
+  <% @team_details.each do |x| %>
+    <div class="details-item">
+      <img id="team-img" src="<%= x[:team][:logo]%>" />
+    </div>
+    <div class="details-item">
+      <h1 id="team-name"><%= x[:team][:name] %></h1>
+        <p> Stadium: <%= x[:venue][:name] %>, <%= x[:venue][:address] %>, <%= x[:venue][:city] %>, <%= x[:team][:country] %> </p>
+      <p> Founded: <%= x[:team][:founded] %></p>
+    </div>
+  <% end %>
+  <div class="details-item">
+  <h1>Results</h1>
+    <p>
+      <% 
+        win = 0
+        draw = 0
+        lose = 0
+        @results_list.each do |x|
+          if x[:teams][:home][:winner] == true
+            win += 1
+          elsif x[:teams][:home][:winner] == false
+            lose += 1
+          else
+            draw += 1
+          end 
+        end 
+      %>
+      <%= "Wins: #{win.to_s}<br>Draws: #{draw.to_s}<br>Losses: #{lose.to_s}" %>
+    </p>
+    <p>
+      <%
+        goal_for = 0
+        goal_against = 0 
+        goal_diff = 0
+        @fixture_list.each do |x|
+          goal_for += x[:goals][:home]
+          goal_against += x[:goals][:away]
+        end
+        goal_diff = goal_for - goal_against
+      %>
+      <%= "Goals For: #{goal_for}<br>Goals Against: #{goal_against}<br>Goal Differential: #{goal_diff}" %>
+    </p>
+  </div>
+</div>
+<div class="table-container">
+  <h2 id="table-title">Scores & Fixtures: Domestic Compitition</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Round</th>
+        <th>Opponent</th>
+        <th>Result</th>
+        <th>Scoreline</th>
+        <th>Venue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @fixture_list.each do |x| %>
+      <tr>
+        <td>
+          <%= x[:date] %>
+        </td>
+        <td> 
+          <%= x[:league][:round] %>
+        </td>
+        <td>
+          <p>
+          <%= x[:teams][:home][:name] %>
+          <img src="<%= x[:teams][:home][:logo] %>" class="team-logo" />
+          vs.
+          <%= x[:teams][:away][:name] %>
+          <img src="<%= x[:teams][:away][:logo] %>" class="team-logo" />
+          </p>
+        </td>
+        <td>
+          <%= 
+            if x[:teams][:home][:winner] == true
+              "W"
+            elsif x[:teams][:home][:winner] == false
+              "L"
+            else
+              "D"
+            end 
+          %>
+        </td>
+        <td>
+          <%= x[:goals][:home] %> - <%= x[:goals][:away] %>
+        </td>
+        <td>
+          <%= x[:venue][:name] %> , <%= x[:venue][:city]%>
+        </td>
+      </tr>
+      <% end %>
+    <tbody>
+  </table>
+</div>

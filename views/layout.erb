@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sinatra Template</title>
+    <title>sundayfooty</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="mystyle.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Tilt+Neon&display=swap" rel="stylesheet">   
+    <style>
+      .hidden { 
+        display: none;
+      } 
+    </style>
   </head>
-
   <body>
+    <div class="header-container">
+      <div class="header-item">
+        <a href="/"><h1 id="site-title">Sunday Footy</h1></a>
+      </div>
+      <div class="header-item">
+        <p id="site-subtitle">Stay updated with the latest scores, in-depth stats, and essential data for your favorite teams and players across top European and American leagues.</p>
+      </div>     
+    </div>
     <%= yield %>
+    <footer>
+      <p>Melissa Martinez, DPI Web App Project</p>
+      <p>Disclaimer: This web app utilizes free data available on API Football. Data is only available from 2021 to 2022 seasons. There are only 100 requests per day permitted under the free data plan.
+      </p>
+    </footer>
   </body>
 </html>
