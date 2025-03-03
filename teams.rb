@@ -17,7 +17,7 @@ class Team
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     request = Net::HTTP::Get.new(url)
     request["x-rapidapi-host"] = 'v3.football.api-sports.io'
-    request["x-rapidapi-key"] = api_football_key
+    request["x-rapidapi-key"] = ENV.fetch("MY_FOOTBALL_KEY")
     response = http.request(request)
     response_read = response.read_body
 
@@ -34,7 +34,7 @@ class Team
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     request = Net::HTTP::Get.new(url)
     request["x-rapidapi-host"] = 'v3.football.api-sports.io'
-    request["x-rapidapi-key"] = api_football_key
+    request["x-rapidapi-key"] = ENV.fetch("MY_FOOTBALL_KEY")
     response = http.request(request)
     response_read = response.read_body
     parsed_response = JSON.parse(response_read)
@@ -85,7 +85,7 @@ class Team
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     request = Net::HTTP::Get.new(url)
     request["x-rapidapi-host"] = 'v3.football.api-sports.io'
-    request["x-rapidapi-key"] = api_football_key
+    request["x-rapidapi-key"] = ENV.fetch("MY_FOOTBALL_KEY")
     response = http.request(request)
     response_read = response.read_body
     parsed_response = JSON.parse(response_read)
@@ -121,7 +121,7 @@ class Team
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
     request = Net::HTTP::Get.new(url)
     request["x-rapidapi-host"] = 'v3.football.api-sports.io'
-    request["x-rapidapi-key"] = api_football_key
+    request["x-rapidapi-key"] = ENV.fetch("MY_FOOTBALL_KEY")
     response = http.request(request)
     response_read = response.read_body
     parsed_response = JSON.parse(response_read)  
